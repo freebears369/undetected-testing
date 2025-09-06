@@ -1,7 +1,7 @@
 name: November checker
 on:
   schedule:
-    - cron: "/15 * * * *"
+    - cron: "*/15 * * * *"
   push:
     branches: [ master ]
   pull_request:
