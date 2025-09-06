@@ -1,0 +1,26 @@
+from seleniumbase import SB
+
+codes = ['OSALC', 'UKYLC', 'TYOWI', 'HKGHV', 'HKGXR']
+
+with SB(uc=True, ad_block=True, test=True) as sb:
+    for code in codes:
+        print(f"--- {code} ---")
+        url = f"https://www.marriott.com/search/availabilityCalendar.mi?propertyCode={code}&isSearch=true&lengthOfStay=1&fromDate=11%2F01%2F2025&toDate=11%2F02%2F2025&numberOfRooms=1&guestCountBox=2+Adults+Per+Room&childrenCountBox=0+Children+Per+Room&roomCountBox=1+Rooms&childrenCount=0&clusterCode=corp&corporateCode=mm4&isHwsGroupSearch=true&flexibleDateSearch=true&isInternalSearch=true&isFlexibleDatesOptionSelected=true&roomCount=1&numAdultsPerRoom=2#/65/"
+
+        sb.open(url)
+        try:
+            sb.wait_for_element_visible(
+                '//div[@aria-label and not(starts-with(@aria-label, "Not available")) and contains(translate(@aria-label, "FOR", "for"), "for")]',
+                timeout=15
+            )
+        except:
+            print('no rates')
+            pass
+
+        cells = sb.find_elements(
+            '//div[@aria-label and not(starts-with(@aria-label, "Not available")) and contains(translate(@aria-label, "FOR", "for"), "for")]'
+        )
+
+        for c in cells:
+            print(c.get_attribute("aria-label"))
+
