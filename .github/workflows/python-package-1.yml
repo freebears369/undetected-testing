@@ -1,7 +1,10 @@
 name: December checker
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    # Every 15 minutes from 12:00 UTC to 23:45 UTC
+    - cron: "0-59/15 12-23 * * *"
+    # Every 15 minutes from 00:00 UTC to 04:45 UTC
+    - cron: "0-59/15 0-4 * * *"
   push:
     branches: [ master ]
   pull_request:
