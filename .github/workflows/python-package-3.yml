@@ -1,4 +1,4 @@
-name: October checker
+name: October checke
 on:
   schedule:
     # Every 15 minutes from 12:00 UTC to 23:45 UTC
