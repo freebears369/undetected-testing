@@ -1,6 +1,6 @@
 from seleniumbase import SB
 
-codes = ["SHARN", "SHAXR", "SHASZ"]
+codes = ["SHARN", "SHAXR", "SHASZ", "WUXSZ"]
 
 with SB(uc=True, ad_block=True, test=True) as sb:
     for code in codes:
