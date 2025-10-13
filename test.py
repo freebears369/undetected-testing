@@ -57,7 +57,7 @@ with SB(uc=True, ad_block=True, test=True) as sb:
         values = []
         for cell in cells:
             label = cell.get_attribute("aria-label")
-            print(label)
+            # print(label)
             if any(date in label for date in target_dates):
                 match = re.search(r"([\d,]+)for", label)
                 if match:
