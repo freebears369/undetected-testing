@@ -1,6 +1,9 @@
 from seleniumbase import SB
+import re
 
 codes = ["TYOAM", "TYOWI"]
+
+target_dates = {"Dec 05", "Dec 06", "Dec 07", "Dec 08", "Dec 09"}
 
 with SB(uc=True, ad_block=True, test=True) as sb:
     for code in codes:
@@ -51,5 +54,21 @@ with SB(uc=True, ad_block=True, test=True) as sb:
             )
         )
 
+        values = []
         for cell in cells:
-            print(cell.get_attribute("aria-label"))
+            label = cell.get_attribute("aria-label")
+            print(label)
+            if any(date in label for date in target_dates):
+                match = re.search(r"([\d,]+)for", label)
+                if match:
+                    number = int(match.group(1).replace(",", ""))
+                    values.append(number)
+
+        if values:
+            total = sum(values)
+            lowest = min(values)
+            result = total - lowest
+            print(f"Filtered dates: {', '.join(sorted(target_dates))}")
+            print(f"Sum minus lowest: {result:,}")
+        else:
+            print("No matching dates found.")
