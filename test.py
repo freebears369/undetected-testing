@@ -73,7 +73,7 @@ with SB(uc=True, ad_block=True, test=True) as sb:
         else:
             print("No matching dates found.")
 
-codes = ["HKGAK"]
+codes = ["HKGAK", "HKGHV"]
 
 target_dates = {"Dec 10", "Dec 11", "Dec 12"}
 
@@ -144,10 +144,8 @@ with SB(uc=True, ad_block=True, test=True) as sb:
             print(f"Filtered dates: {', '.join(sorted(target_dates))}")
             for date in sorted(target_dates):
                 if values[date]:
-                    total = sum(values[date])
                     lowest = min(values[date])
-                    result = total - lowest
-                    print(f"{date}: Total = {total}, Lowest = {lowest}")
+                    print(f"{date}: Point = {total}")
                 else:
                     print(f"{date}: No values found")
         else:
