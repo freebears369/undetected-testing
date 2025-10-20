@@ -72,3 +72,83 @@ with SB(uc=True, ad_block=True, test=True) as sb:
             print(f"Sum minus lowest: {result:,}")
         else:
             print("No matching dates found.")
+
+codes = ["HKGAK"]
+
+target_dates = {"Dec 10", "Dec 11", "Dec 12"}
+
+with SB(uc=True, ad_block=True, test=True) as sb:
+    for code in codes:
+        print(f"--- {code} ---")
+        url = (
+            "https://www.marriott.com/search/"
+            "availabilityCalendar.mi?"
+            f"propertyCode={code}&isSearch=true&currency=&costTab=total&"
+            "isInternalSearch=true&vsInitialRequest=false&searchType=InCity&"
+            "for-hotels-nearme=Near&collapseAccordian=is-hidden&"
+            "singleSearch=true&singleSearchAutoSuggest=Unmatched&"
+            "flexibleDateSearchRateDisplay=false&recordsPerPage=40&"
+            "destinationAddress.latitude=35.655886&"
+            "destinationAddress.location=Mesm+Tokyo%2C+Autograph+Collection&"
+            "searchRadius=50&"
+            "destinationAddress.placeId=ChIJ51cu8IcbXWARiRtXIothAS4&"
+            "destinationAddress.country=JP&isTransient=true&"
+            "destinationAddress.longitude=139.762753&"
+            "destinationAddress.type=Hotel+Name&initialRequest=true&"
+            "fromToDate=10%2F13%2F2025&fromToDate_submit=12%2F04%2F2025&"
+            "fromDate=12%2F03%2F2025&toDate=12%2F04%2F2025&"
+            "toDateDefaultFormat=12%2F04%2F2025&"
+            "fromDateDefaultFormat=12%2F03%2F2025&flexibleDateSearch=true&"
+            "isHideFlexibleDateCalendar=false&t-start=2025-12-03&"
+            "t-end=2025-12-04&isFlexibleDatesOptionSelected=true&"
+            "lengthOfStay=1&roomCount=1&numAdultsPerRoom=1&childrenCount=0&"
+            "clusterCode=none&numberOfRooms=1&useRewardsPoints=true#/2/"
+        )
+
+        sb.open(url)
+        try:
+            sb.wait_for_element_visible(
+                (
+                    "//div[@aria-label and "
+                    "not(starts-with(@aria-label, 'Not available')) and "
+                    "contains(translate(@aria-label, 'FOR', 'for'), 'for')]"
+                ),
+                timeout=15,
+            )
+        except Exception:
+            print("no rates")
+
+        cells = sb.find_elements(
+            (
+                "//div[@aria-label and "
+                "not(starts-with(@aria-label, 'Not available')) and "
+                "contains(translate(@aria-label, 'FOR', 'for'), 'for')]"
+            )
+        )
+
+        values = {date: [] for date in target_dates}  # Initialize an empty list for each target date
+
+        for cell in cells:
+            label = cell.get_attribute("aria-label")
+            if any(date in label for date in target_dates):
+                match = re.search(r"([\d,]+)for", label)
+                if match:
+                    number = int(match.group(1).replace(",", ""))
+                    # Add the number to the corresponding date
+                    for date in target_dates:
+                        if date in label:
+                            values[date].append(number)
+
+        # Output results for each target date
+        if any(values[date] for date in target_dates):
+            print(f"Filtered dates: {', '.join(sorted(target_dates))}")
+            for date in sorted(target_dates):
+                if values[date]:
+                    total = sum(values[date])
+                    lowest = min(values[date])
+                    result = total - lowest
+                    print(f"{date}: Total = {total}, Lowest = {lowest}, Result (Total - Lowest) = {result}")
+                else:
+                    print(f"{date}: No values found")
+        else:
+            print("No matching dates found.")
