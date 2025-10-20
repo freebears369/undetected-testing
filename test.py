@@ -126,7 +126,7 @@ with SB(uc=True, ad_block=True, test=True) as sb:
             )
         )
 
-        values = {date: [] for date in target_dates}  # Initialize an empty list for each target date
+        values = {date: [] for date in target_dates}
 
         for cell in cells:
             label = cell.get_attribute("aria-label")
