@@ -147,7 +147,7 @@ with SB(uc=True, ad_block=True, test=True) as sb:
                     total = sum(values[date])
                     lowest = min(values[date])
                     result = total - lowest
-                    print(f"{date}: Total = {total}, Lowest = {lowest}, Result (Total - Lowest) = {result}")
+                    print(f"{date}: Total = {total}, Lowest = {lowest}")
                 else:
                     print(f"{date}: No values found")
         else:
