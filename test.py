@@ -145,7 +145,7 @@ with SB(uc=True, ad_block=True, test=True) as sb:
             for date in sorted(target_dates):
                 if values[date]:
                     lowest = min(values[date])
-                    print(f"{date}: Point = {total}")
+                    print(f"{date}: Point = {lowest}")
                 else:
                     print(f"{date}: No values found")
         else:
