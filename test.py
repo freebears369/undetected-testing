@@ -73,7 +73,7 @@ with SB(uc=True, ad_block=True, test=True) as sb:
         else:
             print("No matching dates found.")
 
-codes = ["HKGAK", "HKGHV"]
+codes = ["HKGAK", "HKGHV", "HKGDT"]
 
 target_dates = {"Dec 10", "Dec 11", "Dec 12"}
 

@@ -1,6 +1,6 @@
 from seleniumbase import SB
 
-codes = ["OSALC", "UKYLC", "TYOWI", "HKGHV", "HKGXR", "TYORZ"]
+codes = ["OSALC", "UKYLC", "TYOWI", "HKGHV", "HKGXR", "TYORZ", "HKGDT"]
 
 with SB(uc=True, ad_block=True, test=True) as sb:
     for code in codes:
