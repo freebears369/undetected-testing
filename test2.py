@@ -3,7 +3,7 @@ from seleniumbase import SB
 codes = ["OSALC", "UKYLC", "TYOWI", "HKGHV", "HKGXR", "TYORZ",
          "HKGAK", "TYOAM"]
 
-with SB(uc=True, ad_block=True, test=True, proxy_string="") as sb:
+with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
     for code in codes:
         print(f"--- {code} ---")
         url = (
