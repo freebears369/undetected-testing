@@ -5,7 +5,7 @@ codes = ["TYOAM", "TYOWI"]
 
 target_dates = {"Dec 05", "Dec 06", "Dec 07", "Dec 08", "Dec 09"}
 
-with SB(uc=True, ad_block=True, test=True) as sb:
+with SB(uc=True, ad_block=True, test=True, proxy_string = "") as sb:
     for code in codes:
         print(f"--- {code} ---")
         url = (
