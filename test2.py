@@ -58,7 +58,7 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
         )
 
         sb.open(url)
-        sb.sleep(3)  # let JS render
+        sb.sleep(5)  # let JS render
 
         html = sb.get_page_source()
         soup = BeautifulSoup(html, "html.parser")
@@ -76,5 +76,3 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         else:
             print('none')
-
-        time.sleep(5)
