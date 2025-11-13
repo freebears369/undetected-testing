@@ -106,4 +106,5 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
         labels = [div["aria-label"] for div in cells]
 
         for label in labels:
-            print(label)
+            print(label if
+            any(date in label for date in target_dates))
