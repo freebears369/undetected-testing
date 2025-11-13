@@ -1,7 +1,6 @@
 from seleniumbase import SB
 from bs4 import BeautifulSoup
 import re
-import time
 
 codes = ["OSALC", "UKYLC", "TYOWI", "HKGHV", "HKGXR", "TYORZ",
          "HKGAK", "TYOAM"]
