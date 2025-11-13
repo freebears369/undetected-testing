@@ -75,5 +75,3 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         else:
             print('none')
-
-        time.sleep(3)
