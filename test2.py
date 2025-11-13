@@ -71,3 +71,5 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         for label in labels:
             print(label)
+
+        time.sleep(5)
