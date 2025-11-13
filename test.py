@@ -104,7 +104,7 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
                                             re.IGNORECASE)}
         )
         labels = [div["aria-label"] for div in cells]
-        labels = [x for x if any(date in x for date in target_dates)]
+        labels = [x for x in labels if any(date in x for date in target_dates)]
 
         for label in labels:
             print(label)
