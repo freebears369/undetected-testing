@@ -69,7 +69,11 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
         )
         labels = [div["aria-label"] for div in cells]
 
-        for label in labels:
-            print(label)
+        if len(labels) > 0:
+            for label in labels:
+                print(label)
 
-        time.sleep(5)
+        else:
+            print('none')
+
+        time.sleep(3)
