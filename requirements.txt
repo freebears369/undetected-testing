@@ -1,4 +1,5 @@
 seleniumbase>=4.39.6
+beautifulsoup4
 nodriver
 pyvirtualdisplay
 pdbp
