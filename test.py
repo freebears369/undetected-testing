@@ -41,7 +41,8 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         cells = soup.find_all(
             "div",
-            attrs={"aria-label": re.compile(r"^(?!Not available).*for.*", re.IGNORECASE)}
+            attrs={"aria-label": re.compile(r"^(?!Not available).*for.*",
+                                            re.IGNORECASE)}
         )
         labels = [div["aria-label"] for div in cells]
 
