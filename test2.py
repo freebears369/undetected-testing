@@ -1,6 +1,7 @@
 from seleniumbase import SB
 from bs4 import BeautifulSoup
 import re
+import time
 
 codes = ["OSALC", "UKYLC", "TYOWI", "HKGHV", "HKGXR", "TYORZ",
          "HKGAK", "TYOAM"]
@@ -75,3 +76,5 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         else:
             print('none')
+
+        time.sleep(5)
