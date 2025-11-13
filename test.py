@@ -1,4 +1,4 @@
-from seleniumbase import
+from seleniumbase import SB
 from bs4 import BeautifulSoup
 import re
 
