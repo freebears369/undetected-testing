@@ -1,4 +1,5 @@
 from seleniumbase import SB
+from bs4 import BeautifulSoup
 import re
 
 codes = ["TYOAM", "TYOWI"]
