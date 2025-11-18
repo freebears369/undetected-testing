@@ -19,7 +19,7 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
         sb.open(url)
 
         # Wait until the calendar loads instead of fixed sleep
-        sb.wait_for_element_present('div[class*="calendar"]', timeout=25)
+        sb.wait_for_element_present('div.DayPicker-Week[role="row"]', timeout=25)
 
         html = sb.get_page_source()
         soup = BeautifulSoup(html, "html.parser")
