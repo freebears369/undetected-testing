@@ -18,18 +18,16 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         sb.open(url)
 
-        # Wait until the calendar loads instead of fixed sleep
-        sb.wait_for_element_present('div.DayPicker-Week[role="row"]',
-                                    timeout=25)
-
-        html = sb.get_page_source()
-        soup = BeautifulSoup(html, "html.parser")
-
-        cells = soup.find_all(
-            "div",
-            attrs={"aria-label": re.compile(r"^(?!Not available).*for.*",
-                                            re.IGNORECASE)}
-        )
+        for _ in range(20):  # up to ~20 seconds
+            html = sb.get_page_source()
+            soup = BeautifulSoup(html, "html.parser")
+            cells = soup.find_all(
+                "div",
+                attrs={"aria-label": re.compile(r"^(?!Not available).*for.*", re.IGNORECASE)}
+            )
+            if cells:
+                break
+            sb.sleep(1)  # smart retry
 
         labels = [div["aria-label"] for div in cells]
 
