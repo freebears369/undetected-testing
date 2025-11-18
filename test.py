@@ -34,17 +34,16 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
             "clusterCode=none&numberOfRooms=1&useRewardsPoints=true#/2/"
         )
         sb.open(url)
-        for _ in range(20):  # up to ~20 seconds
-            html = sb.get_page_source()
-            soup = BeautifulSoup(html, "html.parser")
-            cells = soup.find_all(
-                "div",
-                attrs={"aria-label": re.compile(
-                    r"^(?!Not available).*for.*", re.IGNORECASE)}
-            )
-            if cells:
-                break
-            sb.sleep(1)  # smart retry
+        sb.sleep(8)  # let JS render
+
+        html = sb.get_page_source()
+        soup = BeautifulSoup(html, "html.parser")
+
+        cells = soup.find_all(
+            "div",
+            attrs={"aria-label": re.compile(r"^(?!Not available).*for.*",
+                                            re.IGNORECASE)}
+        )
         labels = [div["aria-label"] for div in cells]
 
         values = [
