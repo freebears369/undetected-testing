@@ -93,7 +93,7 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
             "clusterCode=none&numberOfRooms=1&useRewardsPoints=true#/2/"
         )
         sb.open(url)
-        sb.sleep(5)  # let JS render
+        sb.sleep(6.5)  # let JS render
 
         html = sb.get_page_source()
         soup = BeautifulSoup(html, "html.parser")
