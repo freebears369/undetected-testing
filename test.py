@@ -2,7 +2,7 @@ from seleniumbase import SB
 from bs4 import BeautifulSoup
 import re
 
-codes = ["TYOAM", "TYOWI", "TYORZ"]
+codes = ["TYOAM", "TYOWI"]
 
 target_dates = {"Dec 05", "Dec 06", "Dec 07", "Dec 08", "Dec 09"}
 
