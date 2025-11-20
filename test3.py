@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 
 codes = ["PARBE", "PARLC", "PARPR", "PARBG", "PARDT",
-         "PARXT", "LONCH","LONGH", "LONGR", "LONWB",
+         "PARXT", "LONCH", "LONGH", "LONGR", "LONWB",
          "LONDT", "LONPL"]
 
 with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
