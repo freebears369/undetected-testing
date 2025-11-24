@@ -5,7 +5,8 @@ import re
 codes = ["PARBE", "PARLC", "PARPR", "PARBG", "PARDT",
          "PARXT", "PARWG",
          "LONCH", "LONGH", "LONGR", "LONWB",
-         "LONDT", "LONPL"]
+         "LONDT", "LONPL", "LONKB", "LONWI",
+         "LONMN", "LONAK"]
 
 with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
     for code in codes:
