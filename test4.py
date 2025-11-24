@@ -2,9 +2,8 @@ from seleniumbase import SB
 from bs4 import BeautifulSoup
 import re
 
-codes = ["LONCH", "LONGH", "LONGR", "LONWB",
-         "LONDT", "LONPL", "LONKB", "LONWI",
-         "LONMN", "LONAK"]
+codes = ["PARBE", "PARLC", "PARPR", "PARBG", "PARDT",
+         "PARXT", "PARWG"]
 
 with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
     for code in codes:

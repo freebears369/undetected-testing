@@ -1,4 +1,4 @@
-name: LON
+name: PAR
 on:
   schedule:
     # Every 15 minutes from 12:00 UTC to 23:45 UTC
@@ -81,7 +81,7 @@ jobs:
         python -c "from seleniumbase import undetected; print(undetected.find_chrome_executable())"
     - name: Run python test3.py
       run: |
-        python test3.py --debug
+        python test4.py --debug
 #    - name: Upload screenshots
 #      uses: actions/upload-artifact@v4
 #      with:
