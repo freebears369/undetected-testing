@@ -79,9 +79,9 @@ jobs:
       run: |
         python -c "from seleniumbase.core import detect_b_ver; print(detect_b_ver.get_binary_location('google-chrome'))"
         python -c "from seleniumbase import undetected; print(undetected.find_chrome_executable())"
-    - name: Run python lon3.py
+    - name: Run python test.py
       run: |
-        python test.py --debug
+        python lon3.py --debug
 #    - name: Upload screenshots
 #      uses: actions/upload-artifact@v4
 #      with:
