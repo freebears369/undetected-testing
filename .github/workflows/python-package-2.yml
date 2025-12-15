@@ -1,4 +1,4 @@
-name: Point Asia
+name: LON3
 on:
   schedule:
     # Every 15 minutes from 12:00 UTC to 23:45 UTC
@@ -79,7 +79,7 @@ jobs:
       run: |
         python -c "from seleniumbase.core import detect_b_ver; print(detect_b_ver.get_binary_location('google-chrome'))"
         python -c "from seleniumbase import undetected; print(undetected.find_chrome_executable())"
-    - name: Run python test.py
+    - name: Run python lon3.py
       run: |
         python test.py --debug
 #    - name: Upload screenshots
