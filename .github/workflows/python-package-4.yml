@@ -2,9 +2,11 @@ name: PAR4
 on:
   schedule:
     # Every 15 minutes from 12:00 UTC to 23:45 UTC
-    - cron: "*/15 * * * *"
-#    # Every 15 minutes from 00:00 UTC to 04:45 UTC
-#    - cron: "*/30 10-20 * * *"
+    - cron: "*/15 0-6 * * *"
+    # Every 15 minutes from 00:00 UTC to 04:45 UTC
+    - cron: "*/30 12-23 * * *"
+    # release
+    - cron: "45 23 * * *"
   push:
     branches: [ master ]
   pull_request:
