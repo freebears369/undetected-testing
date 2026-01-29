@@ -1,4 +1,4 @@
-name: PAR
+name: PAR4
 on:
   schedule:
     # Every 15 minutes from 12:00 UTC to 23:45 UTC
