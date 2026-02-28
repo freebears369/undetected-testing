@@ -22,7 +22,7 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
             "&roomCountBox=1+Rooms"
             "&childrenCount=0"
             "&clusterCode=corp"
-            "&corporateCode=mm4"
+            "&corporateCode=mmp"
             "&groupCode="
             "&isHwsGroupSearch=true"
             "&flexibleDateSearch=true"
