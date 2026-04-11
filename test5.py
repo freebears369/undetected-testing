@@ -22,7 +22,8 @@ URL_TEMPLATE = (
     "&for-hotels-nearme=Near&collapseAccordian=is-hidden"
     "&singleSearch=true&singleSearchAutoSuggest=Unmatched"
     "&flexibleDateSearchRateDisplay=false"
-    "&recordsPerPage=40&destinationAddress.latitude=35.634389"
+    "&recordsPerPage=40"
+    "&destinationAddress.latitude=35.634389"
     "&destinationAddress.location=JW+Marriott+Hotel+Tokyo"
     "&searchRadius=50&isTransient=true"
     "&destinationAddress.longitude=139.73925"
@@ -38,6 +39,46 @@ ARIA_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+FINDHOTELS_URL = (
+    "https://www.marriott.com/search/findHotels.mi?"
+    "fromToDate=11/30/2025&fromToDate_submit=07/02/2026"
+    "&fromDate=07/01/2026&toDate=07/02/2026"
+    "&toDateDefaultFormat=07/02/2026"
+    "&fromDateDefaultFormat=07/01/2026"
+    "&flexibleDateSearch=true"
+    "&t-start=07/01/2026&t-end=07/02/2026"
+    "&lengthOfStay=1&childrenCountBox=0+Children+Per+Room"
+    "&childrenCount=0&clusterCode=CORP&corporateCode=mma"
+    "&useRewardsPoints=false&isAdvanceSearch=false"
+    "&isNGSF=false&recordsPerPage=20"
+    "&destinationAddress.type=Hotel+Name"
+    "&destinationAddress.latitude=37.794702"
+    "&isInternalSearch=true&vsInitialRequest=false"
+    "&searchType=InCity"
+    "&destinationAddress.stateProvinceDisplayName=CA"
+    "&countryName=US&destinationAddress.stateProvince=CA"
+    "&searchRadius=50&singleSearchAutoSuggest=Unmatched"
+    "&destinationAddress.placeId=ChIJJaJK_A-BhYARkTIyu-gNgRw"
+    "&for-hotels-nearme=Near&destinationAddress.country=US"
+    "&destinationAddress.address=433+Clay+St,+San+Francisco,+CA+94111,+USA"
+    "&collapseAccordian=is-hidden"
+    "&singleSearch=true"
+    "&destinationAddress.secondaryText=Clay+Street,+San+Francisco,+CA,+USA"
+    "&destinationAddress.city=San+Francisco"
+    "&destinationAddress.mainText=The+Jay,+Autograph+Collection"
+    "&isTransient=true"
+    "&destinationAddress.longitude=-122.4006747"
+    "&initialRequest=false"
+    "&flexibleDateSearchRateDisplay=false"
+    "&isSearch=true&isRateCalendar=true"
+    "&destinationAddress.destination=The+Jay,+Autograph+Collection,"
+    "+Clay+Street,+San+Francisco,+CA,+USA"
+    "&isHideFlexibleDateCalendar=false"
+    "&roomCountBox=1+Room&roomCount=1"
+    "&guestCountBox=2+Adult+Per+Room&numAdultsPerRoom=2"
+    "&deviceType=desktop-web&view=list#/2/"
+)
+
 
 with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
     for code in CODES:
@@ -45,7 +86,9 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         url = URL_TEMPLATE.format(code=code)
 
-        sb.activate_cdp_mode(url)
+        sb.activate_cdp_mode(FINDHOTELS_URL)
+
+        sb.open(url)
         sb.sleep(6.5)  # let JS render
 
         html = sb.get_page_source()
