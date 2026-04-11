@@ -45,7 +45,7 @@ with SB(uc=True, ad_block=True, test=True, proxy="") as sb:
 
         url = URL_TEMPLATE.format(code=code)
 
-        sb.open(url)
+        sb.activate_cdp_mode(url)
         sb.sleep(6.5)  # let JS render
 
         html = sb.get_page_source()
